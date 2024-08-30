@@ -1,10 +1,14 @@
-.register-page{
+.reg-page{
     position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-items: center;
+    background: #f2f2f2;
+    font-family: "Exo 2", sans-serif;
+
 }
 .reg-page-header{
     position: relative;
@@ -12,7 +16,7 @@
     height: 10%;
     text-align: center;
 }
-.register-nav{
+.reg-nav{
     position: relative;
     width: 100%;
     height: 15%;
@@ -22,24 +26,29 @@
     align-items: center;
 }
 
-.register-nav button{
+.reg-nav button{
     position: relative;
     background: transparent;
-    margin-inline: 40px;
     border: 1px solid #00a7ac33;
     border-radius: 50px;
     padding: 3px 43px;
     font-weight: 500;
-    font-size: 1.125rem;
+    font-size: 1.25rem;
+    transition: all .5s;
 }
 
-.register-main{
+.reg-nav button:hover{
+    background: #00a7ac;
+    color: #fff;
+}
+
+.reg-main{
     position: relative;
     width: 100%;
     height: 75%;
 }
 
-.register-form-content{
+.reg-form-content{
     position: inherit;
     background: #fff;
     border: 1px solid #00a7ac1f;
@@ -48,7 +57,34 @@
     margin-top: 5%;
 }
 
-.register-form-content .reg-input:focus{
+.input-area{
+    position: relative;
+    background: #fff;
+    border: 1px solid rgba(0, 167, 172, .12);
+    border-radius: 5px;
+    height: 50px;
+    padding-left: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: .35s;
+}
+
+.reg-inp-icon{
+    margin-right: 15px;
+}
+
+.reg-inp{
+    position: relative;
+    width: 90%;
+    border: none;
+    border-left: 1px solid #00a7ac1f;
+    outline: none;
+}
+
+    
+
+.input-area:hover{
     border-color: #00a7ac;
 }
 
@@ -62,4 +98,47 @@
     color: #fff;
     font-size: 20px;
     border-radius: 5px;
+}
+
+.reg-agree{
+    position: relative;
+    width: 100%;
+}
+
+.reg-agree #reg-check{
+    border-color: #00a7ac;
+}
+
+.reg-submit-button{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    background-color: #00a7ac;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.reg-submit-button::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #2e2e2e;
+    float: left;
+    top: 0;
+    opacity: 0;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.reg-submit-button:hover{
+    color: #fff;
+}
+
+.reg-submit-button:hover::before{
+    left: 0%;
+    right: 0%;
+    opacity: 1;
 }
