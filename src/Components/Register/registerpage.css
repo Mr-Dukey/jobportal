@@ -45,7 +45,9 @@
 .reg-main{
     position: relative;
     width: 100%;
-    height: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .reg-form-content{
@@ -53,8 +55,9 @@
     background: #fff;
     border: 1px solid #00a7ac1f;
     border-radius: 10px;
-    padding: 50px 70px;
+    padding: 50px 70px 0px;
     margin-top: 5%;
+    width: 70%;
 }
 
 .input-area{
@@ -103,6 +106,7 @@
 .reg-agree{
     position: relative;
     width: 100%;
+    text-align: left;
 }
 
 .reg-agree #reg-check{
@@ -120,25 +124,25 @@
     border-radius: 10px;
 }
 
-.reg-submit-button::before{
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-    background-color: #2e2e2e;
+.reg-form-signin{
     float: left;
-    top: 0;
-    opacity: 0;
-    border-radius: 10px;
-    z-index: -1;
+    font-size: 1.15rem;
 }
 
-.reg-submit-button:hover{
-    color: #fff;
+.reg-form-signin-link{
+    text-decoration: none;
+    color: #00a7ac;
 }
 
-.reg-submit-button:hover::before{
-    left: 0%;
-    right: 0%;
-    opacity: 1;
+.social-auth{
+    padding: 7px 40px;
+    border: 1px solid #52525264;
+    background: none;
+    word-spacing: 5px;
+}
+
+.social-auth img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }

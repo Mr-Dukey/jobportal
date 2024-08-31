@@ -1,6 +1,10 @@
 import React from 'react';
 import './registerpage.css'
 import { Col, Container, Form, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import Google from '../../Assets/GoogleLogo.png';
+
+
 export default function RegisterPage() {
 
 
@@ -80,6 +84,16 @@ export default function RegisterPage() {
                                 </Col>
                                 <Col xs={12} className='mt-4'>
                                     <button type="submit" className="reg-submit-button">Signup</button>
+                                </Col>
+                                <Col xs={12} className='mt-4'>
+                                    <p className='reg-form-signin'>Already have an account? <Link className='reg-form-signin-link'> Login </Link> Here</p>
+                                </Col>
+
+                                <Col xs={12}>
+                                    <button className="social-auth">
+                                        <img src={Google} alt="" />
+                                        Login with Google
+                                    </button>
                                 </Col>
                             </Row>
                         </Form>
