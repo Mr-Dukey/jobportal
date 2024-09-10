@@ -1,5 +1,5 @@
 import React from 'react';
-import './registerpage.css'
+// import './registerpage.css'
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Google from '../../Assets/GoogleLogo.png';
