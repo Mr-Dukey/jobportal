@@ -1,0 +1,166 @@
+.navrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0%;
+}
+
+.navrow button {
+    background-color: white;
+    border: none;
+}
+
+.rows {
+    padding: 0px 20px 0px 0px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.nav1st {
+    padding: 0px 0px 0px 35px;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 35%;
+}
+
+.nav1st button {
+    background-color: white;
+    color: rgb(5, 158, 158);
+    padding-left: 6px;
+    border: none;
+    font-size: 15px;
+}
+
+.nav1st p {
+    margin: 0%;
+    font-size: 15px;
+}
+
+.nav2nd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 41%;
+}
+
+.lan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lan img {
+    height: 19px;
+    width: 19px;
+    border-radius: 50%;
+}
+
+.lan p {
+    font-size: 16px;
+    margin: 0px 0px 0px 10px;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.logo button {
+    border: 1px solid rgb(1, 170, 114);
+    background-color: white;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menui {
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0px 0px 25px;
+}
+
+.menuitem {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.menuitem a {
+    background-color: white;
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.profile {
+    display: flex;
+    width: 22%;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.profile button {
+    border: 1px solid rgb(2, 177, 177);
+    padding: 5px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.profile button,
+img {
+    margin-left: 20px;
+}
+
+.profile button span {
+    position: absolute;
+    translate: middle;
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+    bottom: 23px;
+    right: 0px;
+    font-size: 10px;
+    color: white;
+    font-weight: 600;
+    background-color: rgb(5, 185, 125);
+}
+
+.profile img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.profile span button {
+    border: none;
+    background-color: white;
+    padding: 0%;
+    margin: 0%;
+}
+
+.menubar {
+    border: none;
+    margin-left: 15px;
+}

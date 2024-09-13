@@ -1,13 +1,16 @@
 import './App.css';
 import Routing from './Routing';
 import { BrowserRouter } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion'
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routing />
-      </BrowserRouter>
+      <AnimatePresence>
+        <BrowserRouter>
+          <Routing />
+        </BrowserRouter>
+      </AnimatePresence>
     </div>
   );
 }
