@@ -1,0 +1,554 @@
+.new-job-page{
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(211, 211, 211, 0.24);
+
+}
+
+.new-job-post {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: 700;
+}
+
+.new-job-form {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.wholeform {
+    padding: 50px 70px;
+}
+
+.new-job-sections {
+    width: 70%;
+    height: 100%;
+    border: 1px solid rgba(1, 170, 170, 0.205);
+    border-radius: 10px;
+    background-color: white;
+}
+
+.job {
+    width: 100%;
+    min-height: 100px;
+    max-height: 200px;
+}
+
+.job p {
+    margin: 0px 0px 5px 0px;
+    font-size: 15px;
+}
+
+
+.jobtitle span {
+    background-color: white;
+    border: 1px solid rgba(1, 170, 170, 0.205);
+    height: 45px;
+    padding: 3% 2% 2% 5%;
+    border-right: none;
+    margin: 0%;
+    color: rgb(5, 187, 187);
+}
+
+.jobtitle input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid rgba(1, 170, 170, 0.205);
+    border-left: none;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.jobtitle input:focus {
+    outline-style: none;
+}
+
+.jobtitle1 {
+    width: 100%;
+}
+
+.jobtitle1 span {
+    background-color: white;
+    border: 1px solid rgba(1, 170, 170, 0.205);
+    height: 45px;
+    padding: 3% 2% 2% 5%;
+    border-right: none;
+    margin: 0%;
+    color: rgb(5, 187, 187);
+}
+
+.jobtitle1 select {
+    height: 45px;
+    border: 1px solid rgba(1, 170, 170, 0.205);
+    border-left: none;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.jobtitle1 select option {
+    background-color: rgba(87, 235, 235, 0.116);
+}
+
+.jobtitle1 select:focus {
+    border: 1px solid rgba(1, 170, 170, 0.205);
+    border-left: none;
+}
+
+
+
+.jobtitle2 {
+    display: grid;
+}
+
+.check input {
+    height: 15px;
+    width: 15px;
+    border: 1px solid rgb(6, 202, 202);
+}
+
+.check input:checked {
+    background-color: rgb(6, 202, 202);
+    border-color: rgb(6, 202, 202);
+    box-shadow: none;
+}
+
+.check label {
+    font-size: 15px;
+}
+
+
+.fixed input {
+    height: 15px;
+    width: 15px;
+    border: 1px solid rgb(6, 202, 202);
+}
+
+.fixed input:checked {
+    background-color: rgb(6, 202, 202);
+    border-color: rgb(6, 202, 202);
+    box-shadow: none;
+}
+
+.fixed label {
+    font-size: 15px;
+}
+
+.range input {
+    height: 15px;
+    width: 15px;
+    border: 1px solid rgb(6, 202, 202);
+}
+
+.range input:checked {
+    background-color: rgb(6, 202, 202);
+    border-color: rgb(6, 202, 202);
+    box-shadow: none;
+}
+
+.range label {
+    font-size: 15px;
+}
+
+.salary {
+    width: 100%;
+    height: 70px;
+    padding: 2px 0px 0px 0px;
+    /* display: none; */
+}
+
+.salary input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid rgba(1, 170, 170, 0.205);
+    border-left: none;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.salary span {
+    background-color: white;
+    border: 1px solid rgba(1, 170, 170, 0.205);
+    height: 45px;
+    padding: 3% 2% 2% 5%;
+    border-right: none;
+    margin: 0%;
+    color: rgb(5, 187, 187);
+}
+
+.sr {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* display: none; */
+}
+
+.minsalary {
+    width: 45%;
+    height: 70px;
+    margin: 2px 0px 0px 0px;
+    padding: 0%;
+}
+
+.minsalary input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid rgba(1, 170, 170, 0.205);
+    border-left: none;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.minsalary input:focus {
+    outline: none;
+}
+
+.minsalary span {
+    background-color: white;
+    border: 1px solid rgba(1, 170, 170, 0.205);
+    height: 45px;
+    border-right: none;
+    color: rgb(5, 187, 187);
+}
+
+.declaration {
+    margin-top: 50px;
+}
+
+.check1 input {
+    height: 13px;
+    width: 13px;
+    border: 1px solid rgb(6, 202, 202);
+}
+
+.check1 input:checked {
+    background-color: rgb(6, 202, 202);
+    border-color: rgb(6, 202, 202);
+    box-shadow: none;
+}
+
+.check1 label {
+    padding: 3px 0px 0px 6px;
+}
+
+.check1 {
+    display: flex;
+    align-items: center;
+}
+
+.postnow {
+    padding: 25px 10px;
+}
+
+.postnow button {
+    padding: 9px 25px;
+    border-radius: 5px;
+    background-color: rgb(1, 179, 179);
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+.description {
+    width: 100%;
+    height: 200px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: rgb(156, 154, 154);
+}
+
+.description:focus {
+    outline: none;
+}
+
+@media screen and (max-width:320px) {
+    .nav2nd {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .rows {
+        padding: 0px 5px 0px 0px;
+    }
+
+    .profile {
+        width: 60%;
+    }
+
+    .menu {
+        justify-content: space-evenly;
+    }
+
+    .menui {
+        width: 25%;
+        padding: 0px 0px 0px 10px;
+    }
+
+    .wholeform {
+        padding: 50px 30px;
+    }
+
+    .salary1 input {
+        width: 300px;
+    }
+
+    .profile button,
+    img{
+        margin-left: 10px;
+    }
+
+    .menubar {
+        margin-left: 5px;
+    }
+
+    .sr {
+        flex-direction: column;
+    }
+
+    .minsalary {
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width:321px) and (max-width:375px) {
+    .nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .wholeform {
+        padding: 50px 30px;
+    }
+
+    .nav1st {
+        width: 35%;
+        padding: 0px 0px 0px 20px;
+    }
+
+    .nav2nd {
+        width: 32%;
+    }
+
+    .menui {
+        width: 25%;
+    }
+
+    .profile button,
+    img{
+        margin-left: 10px;
+    }
+
+    .menubar {
+        margin-left: 10px;
+    }
+
+    .profile {
+        width: 55%;
+    }
+
+    .sr {
+        flex-direction: column;
+    }
+
+    .minsalary {
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (min-width:376px) and (max-width:425px) {
+    .nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .wholeform {
+        padding: 50px 30px;
+    }
+
+    .nav1st {
+        width: 35%;
+        padding: 0px 0px 0px 20px;
+    }
+
+    .nav2nd {
+        width: 28%;
+    }
+
+    .menui {
+        width: 25%;
+    }
+
+    .profile button,
+    img{
+        margin-left: 15px;
+    }
+
+    .menubar {
+        margin-left: 5px;
+    }
+
+    .profile {
+        width: 54%;
+    }
+
+    .sr {
+        flex-direction: column;
+    }
+
+    .minsalary {
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width:426px) and (max-width:540px) {
+    .nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav1st {
+        width: 35%;
+        padding: 0px 0px 0px 20px;
+    }
+
+    .nav2nd {
+        width: 22%;
+    }
+
+    .menui {
+        width: 25%;
+    }
+
+    .profile button,
+    img {
+        margin-left: 15px;
+    }
+
+    .menubar {
+        margin-left: 10px;
+    }
+
+    .profile {
+        width: 42%;
+    }
+
+    .sr {
+        flex-direction: column;
+    }
+
+    .minsalary {
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (min-width:541px) and (max-width:767px) {
+    .nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav1st {
+        width: 35%;
+        padding: 0px 0px 0px 20px;
+    }
+
+    .nav2nd {
+        width: 15%;
+    }
+
+    .menui {
+        width: 25%;
+    }
+
+    .profile button,
+    img,
+    span {
+        margin-left: 15px;
+    }
+
+    .menubar {
+        margin-left: 10px;
+    }
+
+    .profile {
+        width: 35%;
+    }
+
+    .sr {
+        flex-direction: column;
+    }
+
+    .minsalary {
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    .nav1st {
+        width: 35%;
+        padding: 0px 0px 0px 20px;
+    }
+
+    .nav2nd {
+        width: 17%;
+    }
+
+    .profile {
+        width: 32%;
+    }
+
+    .sr {
+        flex-direction: column;
+    }
+
+    .minsalary {
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (min-width:992px) and (max-width:1024px) {}
+
+@media screen and (min-width:1025px) and (max-width:1240px) {
+    .profile {
+        width: 20%;
+    }
+
+    .rows {
+        padding: 0px 60px 0px 0px;
+    }
+}
+
+@media screen and (min-width:1241px) and (max-width:1440px) {
+    .profile {
+        width: 17%;
+    }
+
+    .rows {
+        padding: 0px 80px 0px 0px;
+    }
+}
