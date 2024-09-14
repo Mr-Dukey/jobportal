@@ -2,7 +2,6 @@ import React from 'react'
 import './NewJob.css'
 import { Col, Row } from 'react-bootstrap'
 
-
 export default function NewJob() {
     return (
         <div className='new-job-page'>
@@ -69,14 +68,15 @@ export default function NewJob() {
                             </div>
                         </Col>
 
-                        <h6 style={{ fontSize: '14px', textAlign: "left" }}>Job Description*</h6>
-                        <div>
-                            <textarea className='description' placeholder='Type a job description...' rows="10" cols="105"></textarea>
+                        <div className='description'>
+                        <h6 style={{ fontSize: '14px', textAlign: "left" }}>Job Description</h6>
+                            <textarea  placeholder='Type a job description...' rows="10" cols="105"></textarea>
                         </div>
 
 
 
                         <div className="postnow">
+                            <button>Cancel</button>
                             <button>Post Now</button>
                         </div>
 
