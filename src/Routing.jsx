@@ -4,16 +4,24 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import LoginPage from './Components/Login/LoginPage'
 import RegisterPage1 from './Components/Register/Register page one/RegisterPage1'
 import NewJob from './Components/New Job/NewJob'
+import Job from './Components/ClientJobView/ViewJobs/Job'
+import CompanyDashboard from './Components/CompanyMainDashboard/CompanyDashboard'
 export default function Routing() {
   return (
     <div>
-        <Routes>
-          <Route path='/' element={<Navigate to={'login'}/>} />
-            {/* <Route path='register' Component={RegisterPage} /> */}
-            <Route path='register' Component={RegisterPage1} />
-            <Route path='login' Component={LoginPage} />
-            <Route path='new-job' Component={NewJob} />
-        </Routes>
+      <Routes>
+        <Route path='/' element={<Navigate to={'login'} />} />
+        {/* <Route path='register' Component={RegisterPage} /> */}
+        <Route path='register' Component={RegisterPage1} />
+        <Route path='login' Component={LoginPage} />
+
+        <Route path='dashboard' Component={CompanyDashboard}>
+          <Route path='new-job' Component={NewJob} />
+          <Route path='opening-jobs' Component={Job} />
+
+        </Route>
+
+      </Routes>
     </div>
   )
 }

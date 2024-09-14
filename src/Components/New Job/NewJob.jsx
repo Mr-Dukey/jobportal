@@ -5,9 +5,6 @@ import { Col, Row } from 'react-bootstrap'
 export default function NewJob() {
     return (
         <div className='new-job-page'>
-            <div className="new-job-post">
-                <h2>Post a Job</h2>
-            </div>
             <div className="new-job-form">
                 <div className="new-job-sections">
                     <Row className="row wholeform g-md-4 g-2" >
@@ -31,6 +28,22 @@ export default function NewJob() {
                                         <option value="Work from Home">Work&nbsp;from&nbsp;Home</option>
                                         <option value="Intern">Intern</option>
                                     </select>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col xs={12} md={6}>
+                            <div className="new-job-field">
+                                <label htmlFor="job-company">Company</label>
+                                <div className="new-job-input ">
+                                    <input type="text" placeholder='Enter Your Company Name' name="" id="job-company" />
+                                </div>
+                            </div>
+                        </Col>
+                        <Col xs={12} md={6}>
+                            <div className="new-job-field">
+                                <label htmlFor="job-location">Location</label>
+                                <div className="new-job-input ">
+                                    <input type="text" placeholder='Enter Your Location' name="" id="job-location" />
                                 </div>
                             </div>
                         </Col>

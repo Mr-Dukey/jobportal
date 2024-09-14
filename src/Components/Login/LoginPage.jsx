@@ -35,7 +35,7 @@ export default function LoginPage() {
                 <button type="submit" className="login-form-btn">Login</button>
               </div>
             </form>
-            <p>
+            <p style={{textAlign:"center"}}>
               Alredy have Account!&nbsp;
               <Link to={'/register'}>Sign Up</Link>
             </p>

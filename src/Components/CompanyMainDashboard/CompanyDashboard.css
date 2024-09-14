@@ -1,0 +1,104 @@
+.company-main-dashboard {
+    position: absolute;
+    width: 100%;
+    height: 95%;
+    background-color: #eeeeed;
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+.company-main-dashboard-sidebar,
+.company-main-dashboard-outlet,
+.company-main-sidebar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.company-main-dashboard-outlet{
+    overflow-y: scroll;
+}
+
+
+.company-main-sidebar {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 3;
+}
+
+.company-main-sidebar-link {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #eeeeed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.company-main-sidebar-link a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.company-main-sidebar-link #sidebar-icon {
+    margin-right: 10px;
+}
+
+.acc-logout-btn {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background: transparent;
+    border: none;
+    border-top: 2px solid #eeeeed;
+    padding: 15px 0px 0px;
+}
+
+.company-main-dashboard-menu{
+    position: absolute;
+    top: 100px;
+    z-index: 2;
+    width: 80px;
+    height: 30px;
+    display: flex;
+    background: #ffffff;
+    box-shadow: 0px 0px 3px #000;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+@media(max-width:1400px) {
+    .company-main-dashboard {
+        grid-template-columns: 15% 85%;
+    }
+}
+@media(max-width:1200px) {
+    .company-main-dashboard {
+        grid-template-columns: 25% 75%;
+    }
+}
+@media(max-width:992px) {
+    .company-main-dashboard {
+        grid-template-columns: 25% 75%;
+    }
+}
+
+@media(max-width:768px){
+    .company-main-dashboard {
+        grid-template-columns: 100%;
+        grid-template-rows: 100%;
+    }
+    .company-main-dashboard-outlet{
+        grid-row: 1;
+    }
+    .company-main-dashboard-sidebar{
+        position: absolute;
+        left: -100%;
+    }
+}

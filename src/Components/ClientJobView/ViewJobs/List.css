@@ -1,0 +1,38 @@
+.card:hover{
+    border-color: #00a7ac;
+}
+
+img{
+    border: 2px solid white;
+    border-radius: 30px;
+    height: 60px;
+    width: 60px;
+}
+li{
+    list-style: none;
+}
+.core4{
+    font-size: 20px;
+    font-weight: 550;  
+}
+.core4:hover{
+    color: #00a7ac;
+}
+
+
+.core11 button {
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: #F3E8C1;
+}
+.core131 button{
+    border: 2px solid white;
+    background-color: #F3E8C1;
+    border-radius: 30px;
+}
+.core13 button{
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color:#b4f2ee;
+  
+}
