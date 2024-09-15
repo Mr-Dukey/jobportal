@@ -3,8 +3,6 @@ import './CompanyDashboard.css';
 import { motion } from 'framer-motion';
 import { Link, Outlet } from 'react-router-dom';
 
-
-
 export default function CompanyDashboard() {
 
     const [menu, setMenu] = useState(false);
