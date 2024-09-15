@@ -102,3 +102,11 @@
         left: -100%;
     }
 }
+
+.menu-active{
+    left: 0;
+}
+
+.menu-inactive{
+    left: -100%;
+}

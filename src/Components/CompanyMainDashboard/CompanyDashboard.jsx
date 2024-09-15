@@ -19,16 +19,17 @@ export default function CompanyDashboard() {
         }
     }
 
-    console.log(menuRef);
+    console.log(menuRef.current);
 
-    console.log(window.innerWidth )
     useEffect(() => {
         if (window.innerWidth === 768) {
             if (menu === false) {
-                menuRef.current.style.left = '-100%'
+                menuRef.current.classList.add('menu-inactive');
+                menuRef.current.classList.remove('menu-active');
             }
             else if (menu === true) {
-                menuRef.current.style.right = '0%'
+                menuRef.current.classList.add('menu-active');
+                menuRef.current.classList.remove('menu-inactive');
             }
         }
         console.log(menu);
@@ -42,12 +43,12 @@ export default function CompanyDashboard() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <span className='company-main-dashboard-menu' onClick={handleToggleMenu}>
+            <button className='company-main-dashboard-menu' onClick={handleToggleMenu}>
                 <span class="material-symbols-outlined" id='main-icon'>
                     menu
                 </span>
                 Menu
-            </span>
+            </button>
             <div className='company-main-dashboard'>
                 <div className="company-main-dashboard-sidebar" ref={menuRef}>
                     <SideBarComponent />
