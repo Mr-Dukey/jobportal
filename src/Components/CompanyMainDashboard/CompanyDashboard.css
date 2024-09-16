@@ -17,6 +17,7 @@
 
 .company-main-dashboard-outlet{
     overflow-y: scroll;
+    padding-top: 20px;
 }
 
 
