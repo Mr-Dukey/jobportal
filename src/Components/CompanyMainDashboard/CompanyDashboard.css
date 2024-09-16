@@ -82,7 +82,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    visibility: hidden;
+    bottom: -100%;
+    transition: all 0.2s;
 }
 
 .bottom-bar .dashboard-bottom-navbar a{
@@ -121,6 +122,6 @@
     }
 
     .bottom-bar{
-        visibility: visible;
+        bottom: 0%;
     }
 }
