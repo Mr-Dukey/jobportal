@@ -45,7 +45,7 @@ function SideBarComponent() {
                     <span class="material-symbols-outlined" id='sidebar-icon'>
                         format_list_bulleted
                     </span>
-                    <Link>View&nbsp;Posted&nbsp;Jobs</Link>
+                    <Link to={'posted-jobs'}>View&nbsp;Posted&nbsp;Jobs</Link>
                 </div>
                 <div className="company-main-sidebar-link">
                     <span class="material-symbols-outlined" id='sidebar-icon'>

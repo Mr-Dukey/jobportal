@@ -3,6 +3,7 @@ import './NewJob.css'
 import { Col, Row } from 'react-bootstrap'
 
 export default function NewJob() {
+    
     return (
         <div className='new-job-page'>
             <div className="new-job-form">
