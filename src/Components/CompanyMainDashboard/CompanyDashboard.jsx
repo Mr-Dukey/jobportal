@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import './CompanyDashboard.css';
 import { motion } from 'framer-motion';
 import { Link, Outlet } from 'react-router-dom';
