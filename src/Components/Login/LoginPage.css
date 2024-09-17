@@ -72,6 +72,7 @@
 
 #log-icon{
     width: 50px;
+    text-align: center;
 }
 
 .login-form-inp:focus-within{
