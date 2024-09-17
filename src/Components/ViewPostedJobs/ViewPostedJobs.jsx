@@ -3,12 +3,12 @@ import './ViewPostedJobs.css'
 import axios from 'axios';
 
 export default function ViewPostedJobs() {
-    const [jobViews, setJobiews] = useState([]);
+    const [jobViews, setJobviews] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:2400/job/get-all-jobs')
             .then((res) => {
-                setJobiews(res.data)
+                setJobviews(res.data)
             })
             .catch(error => console.log(error))
     }, [jobViews])
@@ -28,14 +28,14 @@ export default function ViewPostedJobs() {
                 <tbody>
                     {
                         jobViews.map((items, index) => {
-                            const postDate = new Date(items.JobPostedDate).toLocaleDateString(); // Properly format the date
+                            const postDate = new Date(items.JobPostedDate).toLocaleDateString(); 
                             return (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
                                     <td>{items.JobTitle}</td>
                                     <td>{items.JobExperience}</td>
                                     <td>{items.JobSkills}</td>
-                                    <td>{postDate}</td> {/* Render the formatted date */}
+                                    <td>{postDate}</td>
                                     <td>
                                         <button className='job-action-btn job-action-btn1'>View</button>
                                         <button className='job-action-btn job-action-btn2'>Edit</button>
