@@ -6,7 +6,7 @@ export default function ViewPostedJobs() {
     const [jobViews, setJobviews] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:2400/job/get-all-jobs')
+        axios.get('https://jobportal-backend-0qiv.onrender.com/job/get-all-jobs')
             .then((res) => {
                 setJobviews(res.data)
             })

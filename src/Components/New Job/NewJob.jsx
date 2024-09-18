@@ -68,7 +68,7 @@ export default function NewJob() {
         e.preventDefault();
         console.log(state);
         
-        axios.post('http://localhost:2400/job/post-a-job',state)
+        axios.post('https://jobportal-backend-0qiv.onrender.com/job/post-a-job',state)
         .then(()=>{
             navi('/opening-jobs');
         })
