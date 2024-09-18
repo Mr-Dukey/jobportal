@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import './register.css';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import axios from 'axios';
+
 export default function RegisterPage1() {
     const [regOption, setRegOption] = useState(false);
 
@@ -44,6 +46,13 @@ export default function RegisterPage1() {
 
 
 function CompanyRegister() {
+    const initData = {
+        ComapnyName: ""
+    }
+    function companyReducer() {
+
+    }
+    const [state, dispatch] = useReducer(companyReducer, initData);
     return (
         <div className="register-form">
             <motion.div
@@ -157,6 +166,68 @@ function CompanyRegister() {
 }
 
 function CandidateRegister() {
+    const navi = useNavigate();
+    const initData = {
+        actData: {
+            FirstName: "",
+            LastName: "",
+            Email: "",
+            Phone: "",
+            Password: ""
+        },
+        passData: {
+            conPass: ""
+        }
+    }
+
+    function candidateReducer(state, action) {
+        if (action.type === "cg_text") {
+            return{
+                ...state,
+                actData:{
+                    ...state.actData,
+                    [action.field]:action.payload
+                }
+            }
+        }
+        else if(action.type === 'con_pass'){
+            return{
+                ...state,
+                passData:{
+                    ...state.passData,
+                    conPass : action.cpass
+                }
+            }
+        }
+        else{
+            return  state;
+        }
+    }
+
+    const [state, dispatch] = useReducer(candidateReducer, initData);
+
+    function handleChangeData(e) {
+        const { name, value } = e.target;
+        dispatch({
+            type: 'cg_text',
+            field: name,
+            payload: value
+        })
+    }
+
+    function handleRegisterCandidate(e){
+        e.preventDefault();
+        if(state.actData.Password === state.passData.conPass){
+            axios.post('http://localhost:2400/user/create-user',state.actData)
+            .then(()=>{
+                navi('/login')
+            })
+            .catch(err=>console.log(err));
+        }
+        else{
+            return false;
+        }
+    }
     return (
         <div className="register-form">
             <motion.div
@@ -167,12 +238,14 @@ function CandidateRegister() {
                 <div className="form-header">
                     <span>Candidate</span>
                 </div>
-                <Form>
+                <Form onSubmit={
+                    handleRegisterCandidate
+                }>
                     <Row className='g-4'>
                         <Col xs={12} md={6}>
                             <label htmlFor="cfname">First&nbsp;name</label>
                             <div className="register-form-input">
-                                <input type="text" name="" id="cfname" />
+                                <input type="text" name="FirstName" value={state.actData.FirstName} onChange={handleChangeData} id="cfname" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     id_card
                                 </span>
@@ -181,7 +254,7 @@ function CandidateRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="clname">Last&nbsp;name</label>
                             <div className="register-form-input">
-                                <input type="text" name="" id="clname" />
+                                <input type="text" name="LastName" value={state.actData.LastName} onChange={handleChangeData} id="clname" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     id_card
                                 </span>
@@ -190,7 +263,7 @@ function CandidateRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="cemail">Email</label>
                             <div className="register-form-input">
-                                <input type="email" name="" id="cemail" />
+                                <input type="email" name="Email" value={state.actData.Email} onChange={handleChangeData} id="cemail" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     mail
                                 </span>
@@ -199,7 +272,7 @@ function CandidateRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="cphone">Phone</label>
                             <div className="register-form-input">
-                                <input type="number" name="" id="cphone" />
+                                <input type="number" name="Phone" value={state.actData.Phone} onChange={handleChangeData} id="cphone" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     call
                                 </span>
@@ -208,7 +281,7 @@ function CandidateRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="cpass">Pasword</label>
                             <div className="register-form-input">
-                                <input type="password" name="" id="cpass" />
+                                <input type="password" name="Password" value={state.actData.Password} onChange={handleChangeData} id="cpass" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     password_2
                                 </span>
@@ -217,7 +290,13 @@ function CandidateRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="ccpass">Confirm&nbsp;Pasword</label>
                             <div className="register-form-input">
-                                <input type="password" name="" id="ccpass" />
+                                <input type="password" name="conPass" value={state.passData.conPass} 
+                                onChange={(e) => {
+                                    dispatch({
+                                        type:"con_pass",
+                                        cpass:e.target.value
+                                    })
+                                }} id="ccpass" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     password_2
                                 </span>

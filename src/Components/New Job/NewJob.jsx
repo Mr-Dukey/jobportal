@@ -70,7 +70,7 @@ export default function NewJob() {
         
         axios.post('http://localhost:2400/job/post-a-job',state)
         .then(()=>{
-            navi('/dashboard/new-job');
+            navi('/opening-jobs');
         })
         .catch(error=>console.log(error))
     }

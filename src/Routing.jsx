@@ -11,7 +11,7 @@ export default function Routing() {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Navigate to={'login'} />} />
+        <Route path='/' element={<Navigate to={'/dashboard/new-job'} />} />
         {/* <Route path='register' Component={RegisterPage} /> */}
         <Route path='register' Component={RegisterPage1} />
         <Route path='login' Component={LoginPage} />
