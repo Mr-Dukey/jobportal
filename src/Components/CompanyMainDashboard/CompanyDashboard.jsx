@@ -69,7 +69,7 @@ function SideBarComponent() {
 function BottomNavigation() {
     return (
         <div className='dashboard-bottom-navbar'>
-            <Link to={'/dashboard'}>
+            <Link>
                 <span class="material-symbols-outlined" id='sidebar-icon'>
                     dashboard
                 </span>
@@ -79,7 +79,7 @@ function BottomNavigation() {
                     post_add
                 </span>
             </Link>
-            <Link>
+            <Link to={'posted-jobs'}>
                 <span class="material-symbols-outlined" id='sidebar-icon'>
                     format_list_bulleted
                 </span>

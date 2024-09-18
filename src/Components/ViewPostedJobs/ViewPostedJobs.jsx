@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './ViewPostedJobs.css'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function ViewPostedJobs() {
     const [jobViews, setJobviews] = useState([]);
+    const navi = useNavigate();
 
     useEffect(() => {
         axios.get('https://jobportal-backend-0qiv.onrender.com/job/get-all-jobs')
@@ -11,7 +13,17 @@ export default function ViewPostedJobs() {
                 setJobviews(res.data)
             })
             .catch(error => console.log(error))
-    }, [jobViews])
+    }, [jobViews]);
+
+
+    function handleDelete(id){
+        axios.delete('https://jobportal-backend-0qiv.onrender.com/job/delete-job/'+id)
+        .then(()=>{
+            navi('/dashboard/posted-jobs')
+        })
+        .catch(error => console.log(error))
+
+    }
     return (
         <div className='view-posted-job-page'>
             <table className="view-posted-box">
@@ -39,7 +51,11 @@ export default function ViewPostedJobs() {
                                     <td>
                                         <button className='job-action-btn job-action-btn1'>View</button>
                                         <button className='job-action-btn job-action-btn2'>Edit</button>
-                                        <button className='job-action-btn job-action-btn3'>Delete</button>
+                                        <button className='job-action-btn job-action-btn3'
+                                            onClick={()=>{
+                                                handleDelete(items._id)
+                                            }}
+                                        >Delete</button>
                                     </td>
                                 </tr>
                             );
