@@ -46,13 +46,7 @@ export default function RegisterPage1() {
 
 
 function CompanyRegister() {
-    const initData = {
-        ComapnyName: ""
-    }
-    function companyReducer() {
-
-    }
-    const [state, dispatch] = useReducer(companyReducer, initData);
+    
     return (
         <div className="register-form">
             <motion.div
