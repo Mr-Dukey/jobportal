@@ -39,13 +39,13 @@ function SideBarComponent() {
                     <span class="material-symbols-outlined" id='sidebar-icon'>
                         post_add
                     </span>
-                    <Link to={'new-job'}>Post&nbsp;A&nbsp;Job</Link>
+                    <Link to={'/dashboard/new-job'}>Post&nbsp;A&nbsp;Job</Link>
                 </div>
                 <div className="company-main-sidebar-link">
                     <span class="material-symbols-outlined" id='sidebar-icon'>
                         format_list_bulleted
                     </span>
-                    <Link to={'posted-jobs'}>View&nbsp;Posted&nbsp;Jobs</Link>
+                    <Link to={'/dashboard/posted-jobs'}>View&nbsp;Posted&nbsp;Jobs</Link>
                 </div>
                 <div className="company-main-sidebar-link">
                     <span class="material-symbols-outlined" id='sidebar-icon'>
@@ -74,12 +74,12 @@ function BottomNavigation() {
                     dashboard
                 </span>
             </Link>
-            <Link to={'new-job'}>
+            <Link to={'/dashboard/new-job'}>
                 <span class="material-symbols-outlined" id='sidebar-icon'>
                     post_add
                 </span>
             </Link>
-            <Link to={'posted-jobs'}>
+            <Link to={'/dashboard/posted-jobs'}>
                 <span class="material-symbols-outlined" id='sidebar-icon'>
                     format_list_bulleted
                 </span>

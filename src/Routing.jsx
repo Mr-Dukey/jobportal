@@ -16,11 +16,11 @@ export default function Routing() {
         <Route path='register' Component={RegisterPage1} />
         <Route path='login' Component={LoginPage} />
 
-        <Route path='dashboard' Component={CompanyDashboard}>
+        <Route path='/dashboard' Component={CompanyDashboard}>
           <Route path='new-job' Component={NewJob} />
           <Route path='posted-jobs' Component={ViewPostedJobs} />
         </Route>
-        <Route path='opening-jobs' Component={ViewOpenings} />
+        <Route path='/opening-jobs' Component={ViewOpenings} />
 
       </Routes>
     </div>
