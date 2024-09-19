@@ -7,6 +7,7 @@ import NewJob from './Components/New Job/NewJob'
 import CompanyDashboard from './Components/CompanyMainDashboard/CompanyDashboard'
 import ViewPostedJobs from './Components/ViewPostedJobs/ViewPostedJobs'
 import ViewOpenings from './Components/ClientJobView/ViewJobs/ViewOpenings'
+import EditJobDetails from './Components/EditJobDetails/EditJobDetails'
 export default function Routing() {
   return (
     <div>
@@ -19,8 +20,9 @@ export default function Routing() {
         <Route path='/dashboard' Component={CompanyDashboard}>
           <Route path='new-job' Component={NewJob} />
           <Route path='posted-jobs' Component={ViewPostedJobs} />
+          <Route path='edit-job/:id' Component={EditJobDetails} />
         </Route>
-        <Route path='/opening-jobs' Component={ViewOpenings} />
+        <Route path='/home' Component={ViewOpenings} />
 
       </Routes>
     </div>

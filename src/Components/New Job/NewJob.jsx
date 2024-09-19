@@ -69,8 +69,9 @@ export default function NewJob() {
         console.log(state);
         
         axios.post('https://jobportal-backend-0qiv.onrender.com/job/post-a-job',state)
+        // axios.post('http://localhost:2400/job/post-a-job',state)
         .then(()=>{
-            navi('/opening-jobs');
+            navi('/dashboard/posted-jobs');
         })
         .catch(error=>console.log(error))
     }
@@ -100,8 +101,9 @@ export default function NewJob() {
                                 <div className="new-job-field">
                                     <label htmlFor="job-type">Job Type</label>
                                     <div className="new-job-input">
-                                        <select name="JobType" onChange={handleJobChangeText} value={state.JobType} id="job-type">
-                                            <option value="Full Time" selected>Full&nbsp;Time</option>
+                                        <select name="JobType" onSelect={handleJobChangeText} onChange={handleJobChangeText} value={state.JobType} id="job-type">
+                                            <option value="" selected> -- Select -- </option>
+                                            <option value="Full Time">Full&nbsp;Time</option>
                                             <option value="Part Time">Part&nbsp;Time</option>
                                             <option value="Work from Home">Work&nbsp;from&nbsp;Home</option>
                                             <option value="Intern">Intern</option>
@@ -184,7 +186,7 @@ export default function NewJob() {
                             <div className="postnow">
                                 <button 
                                     onClick={()=>{
-                                        navi('/dashboard');
+                                        navi('/dashboard/posted-jobs');
                                     }}
                                 >Cancel</button>
                                 <button onClick={handleSubmitJobForm}>Post Now</button>

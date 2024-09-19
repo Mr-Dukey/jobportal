@@ -50,6 +50,7 @@ export default function ViewPostedJobs() {
 
     function handleDelete(id) {
         axios.delete('https://jobportal-backend-0qiv.onrender.com/job/delete-job/' + id)
+        // axios.delete('http://localhost:2400/job/delete-job/' + id)
             .then(() => {
                 navi('/dashboard/posted-jobs')
             })
@@ -88,7 +89,11 @@ export default function ViewPostedJobs() {
                                                 handleShowModal(items._id)
                                             }}
                                         >View</button>
-                                        <button className='job-action-btn job-action-btn2'>Edit</button>
+                                        <button className='job-action-btn job-action-btn2'
+                                            onClick={()=>{
+                                                navi(`/dashboard/edit-job/${items._id}`)
+                                            }}
+                                        >Edit</button>
                                         <button className='job-action-btn job-action-btn3'
                                             onClick={() => {
                                                 handleDelete(items._id)
@@ -115,6 +120,7 @@ export default function ViewPostedJobs() {
                     <p>Company : {showJobDetails.JobCompany}</p>
                     <p>Location : {showJobDetails.JobLocation} | Date Posted : {new Date(showJobDetails.JobPostedDate).toLocaleDateString()}</p>
                     <p>Skills : {showJobDetails.JobSkills}</p>
+                    <p>Job Type : {showJobDetails.JobType}</p>
                     <hr />
                     <p>
                         <h5>Description</h5>
