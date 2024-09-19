@@ -35,7 +35,7 @@ export default function ViewOpenings() {
                     </div>
                 </div>
                 <div className="view-opening-area">
-                    {   jobViews.length!=0?
+                    {   jobViews.length!==0?
                         jobViews.map((items, index) => {
                             return (
                                 <div className="job-card" key={index}>
