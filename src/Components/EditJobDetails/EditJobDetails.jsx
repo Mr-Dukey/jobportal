@@ -72,7 +72,7 @@ export default function EditJobDetails() {
     }
 
     useEffect(()=>{
-        axios.get(`https://jobportal-backend-0qiv.onrender.com/job/update-job/${id}`)
+        axios.get(`https://jobportal-backend-0qiv.onrender.com/job/get-job/${id}`)
         // axios.get(`http://localhost:2400/job/get-job/${id}`)
         .then((res)=>{
             dispatch({
