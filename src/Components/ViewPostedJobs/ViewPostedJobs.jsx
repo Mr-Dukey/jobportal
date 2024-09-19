@@ -1,14 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import './ViewPostedJobs.css'
+import './ViewPostedJobs.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Button, Modal } from 'react-bootstrap';
 
 export default function ViewPostedJobs() {
     const [jobViews, setJobviews] = useState([]);
     const navi = useNavigate();
 
+    /* ======================== Modal =================================== */
+
+    const [showModal, setShowModal] = useState(false);
+
+    const [showJobDetails,setShowJobDetails] = useState({});
+    function handleShowModal(id) {
+        setShowModal(true);
+
+        axios.get('https://jobportal-backend-0qiv.onrender.com/job/get-job/'+id)
+        // axios.get('http://localhost:2400/job/get-job/'+id)
+            .then((res) => {
+                console.log(res);
+                
+                setShowJobDetails(res.data)
+                console.log(showJobDetails);
+            })
+            .catch(error => console.log(error))
+
+            
+    }
+
+    function handleCloseModal(){
+        setShowModal(false);
+        setShowJobDetails({});
+    }
+
+    /* ======================== Modal =================================== */
+
+
+    /* ======================== APIs =================================== */
     useEffect(() => {
         axios.get('https://jobportal-backend-0qiv.onrender.com/job/get-all-jobs')
+        // axios.get('http://localhost:2400/job/get-all-jobs')
             .then((res) => {
                 setJobviews(res.data)
             })
@@ -16,14 +48,16 @@ export default function ViewPostedJobs() {
     }, [jobViews]);
 
 
-    function handleDelete(id){
-        axios.delete('https://jobportal-backend-0qiv.onrender.com/job/delete-job/'+id)
-        .then(()=>{
-            navi('/dashboard/posted-jobs')
-        })
-        .catch(error => console.log(error))
+    function handleDelete(id) {
+        axios.delete('https://jobportal-backend-0qiv.onrender.com/job/delete-job/' + id)
+            .then(() => {
+                navi('/dashboard/posted-jobs')
+            })
+            .catch(error => console.log(error))
 
     }
+    /* ======================== APIs =================================== */
+
     return (
         <div className='view-posted-job-page'>
             <table className="view-posted-box">
@@ -40,19 +74,23 @@ export default function ViewPostedJobs() {
                 <tbody>
                     {
                         jobViews.map((items, index) => {
-                            const postDate = new Date(items.JobPostedDate).toLocaleDateString(); 
+                            
                             return (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
                                     <td>{items.JobTitle}</td>
                                     <td>{items.JobExperience}</td>
                                     <td>{items.JobSkills}</td>
-                                    <td>{postDate}</td>
+                                    <td>{new Date(items.JobPostedDate).toLocaleDateString()}</td>
                                     <td>
-                                        <button className='job-action-btn job-action-btn1'>View</button>
+                                        <button className='job-action-btn job-action-btn1'
+                                            onClick={()=>{
+                                                handleShowModal(items._id)
+                                            }}
+                                        >View</button>
                                         <button className='job-action-btn job-action-btn2'>Edit</button>
                                         <button className='job-action-btn job-action-btn3'
-                                            onClick={()=>{
+                                            onClick={() => {
                                                 handleDelete(items._id)
                                             }}
                                         >Delete</button>
@@ -63,6 +101,35 @@ export default function ViewPostedJobs() {
                     }
                 </tbody>
             </table>
+
+            {/* ================ modal ================== */}
+
+            <Modal size="lg" show={showModal} onHide={handleCloseModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        <h3>Job Details</h3>
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h5>{showJobDetails.JobTitle}</h5>
+                    <p>Company : {showJobDetails.JobCompany}</p>
+                    <p>Location : {showJobDetails.JobLocation} | Date Posted : {new Date(showJobDetails.JobPostedDate).toLocaleDateString()}</p>
+                    <p>Skills : {showJobDetails.JobSkills}</p>
+                    <hr />
+                    <p>
+                        <h5>Description</h5>
+                        {showJobDetails.JobDescription}
+                    </p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseModal}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+            {/* ================ modal ================== */}
+
         </div>
     )
 }
