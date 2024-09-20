@@ -88,7 +88,6 @@ export default function EditJobDetails() {
         console.log(state);
 
         axios.put(`https://jobportal-backend-0qiv.onrender.com/job/update-job/${id}`, state)
-        // axios.put(`http://localhost:2400/job/update-job/${id}`, state)
             .then(() => {
                 navi('/dashboard/posted-jobs');
             })

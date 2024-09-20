@@ -15,7 +15,7 @@ export default function LoginPage() {
   })
   function handleLogin(e) {
     e.preventDefault();
-    axios.post('http://localhost:2400/user/user-login',
+    axios.post('https://jobportal-backend-0qiv.onrender.com/user/user-login',
       loginDatas,
       {
         withCredentials: true

@@ -213,8 +213,7 @@ function CandidateRegister() {
     function handleRegisterCandidate(e){
         e.preventDefault();
         if(state.actData.Password === state.passData.conPass){
-            // axios.post('https://jobportal-backend-0qiv.onrender.com/user/create-user',state.actData)
-            axios.post('http://localhost:2400/user/create-user',state.actData)
+            axios.post('https://jobportal-backend-0qiv.onrender.com/user/create-user',state.actData)
             .then(()=>{
                 navi('/login')
             })

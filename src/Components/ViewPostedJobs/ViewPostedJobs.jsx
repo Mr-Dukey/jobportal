@@ -18,7 +18,6 @@ export default function ViewPostedJobs() {
         setShowModal(true);
 
         axios.get('https://jobportal-backend-0qiv.onrender.com/job/get-job/'+id)
-        // axios.get('http://localhost:2400/job/get-job/'+id)
             .then((res) => {
                 console.log(res);
                 
@@ -41,7 +40,6 @@ export default function ViewPostedJobs() {
     /* ======================== APIs =================================== */
     useEffect(() => {
         axios.get('https://jobportal-backend-0qiv.onrender.com/job/get-all-jobs')
-        // axios.get('http://localhost:2400/job/get-all-jobs')
             .then((res) => {
                 setJobviews(res.data)
             })
@@ -51,7 +49,6 @@ export default function ViewPostedJobs() {
 
     function handleDelete(id) {
         axios.delete('https://jobportal-backend-0qiv.onrender.com/job/delete-job/' + id)
-        // axios.delete('http://localhost:2400/job/delete-job/' + id)
             .then(() => {
                 navi('/dashboard/posted-jobs')
             })

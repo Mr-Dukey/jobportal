@@ -70,7 +70,6 @@ export default function NewJob() {
         console.log(state);
         
         axios.post('https://jobportal-backend-0qiv.onrender.com/job/post-a-job',state)
-        // axios.post('http://localhost:2400/job/post-a-job',state)
         .then(()=>{
             navi('/dashboard/posted-jobs');
         })

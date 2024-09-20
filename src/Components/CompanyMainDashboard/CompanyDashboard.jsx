@@ -31,10 +31,8 @@ function SideBarComponent() {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        // Clear the login status
         Cookies.remove('token');
         logout();
-        // Redirect to the login page
         navigate('/login');
     };
     return (
