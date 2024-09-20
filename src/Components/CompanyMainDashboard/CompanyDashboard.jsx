@@ -1,7 +1,9 @@
 import React from 'react';
 import './CompanyDashboard.css';
 import { motion } from 'framer-motion';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { logout } from '../Authentication/Auth';
+import Cookies from 'js-cookie';
 
 export default function CompanyDashboard() {
     return (
@@ -26,6 +28,15 @@ export default function CompanyDashboard() {
 }
 
 function SideBarComponent() {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        // Clear the login status
+        Cookies.remove('token');
+        logout();
+        // Redirect to the login page
+        navigate('/login');
+    };
     return (
         <div className='company-main-sidebar' id={"menu"}>
             <div className="company-main-sidebar-1">
@@ -54,7 +65,7 @@ function SideBarComponent() {
                     <Link>Profile</Link>
                 </div>
             </div>
-            <button className='acc-logout-btn'>
+            <button className='acc-logout-btn' onClick={handleLogout}>
                 <span class="material-symbols-outlined" id='sidebar-icon'>
                     logout
                 </span>
