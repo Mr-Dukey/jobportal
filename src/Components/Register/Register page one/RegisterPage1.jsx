@@ -4,6 +4,7 @@ import './register.css';
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 export default function RegisterPage1() {
     const [regOption, setRegOption] = useState(false);
@@ -224,6 +225,9 @@ function CandidateRegister() {
     }
     return (
         <div className="register-form">
+            <Helmet>
+                <title>XYZ-Jobs | Register </title>
+            </Helmet>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

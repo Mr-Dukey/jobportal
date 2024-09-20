@@ -3,6 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 export default function EditJobDetails() {
     const navi = useNavigate();
@@ -96,6 +97,9 @@ export default function EditJobDetails() {
 
     return (
         <div>
+            <Helmet>
+                <title>XYZ-Jobs | Edit Job Details</title>
+            </Helmet>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

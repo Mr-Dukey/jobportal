@@ -3,6 +3,7 @@ import './ViewPostedJobs.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
 
 export default function ViewPostedJobs() {
     const [jobViews, setJobviews] = useState([]);
@@ -61,6 +62,9 @@ export default function ViewPostedJobs() {
 
     return (
         <div className='view-posted-job-page'>
+            <Helmet>
+                <title>XYZ-Jobs | View Jobs</title>
+            </Helmet>
             <table className="view-posted-box">
                 <thead>
                     <tr>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ViewOpenings.css';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 
 export default function ViewOpenings() {
@@ -22,6 +23,9 @@ export default function ViewOpenings() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
+            <Helmet>
+                <title>XYZ-Jobs | Home </title>
+            </Helmet>
             <div className='view-openings-page'>
                 <div className="view-opening-header">
                     <h3>Current Openings</h3>

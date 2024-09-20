@@ -4,6 +4,7 @@ import { Col, Row } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 export default function NewJob() {
     const navi = useNavigate();
@@ -83,6 +84,9 @@ export default function NewJob() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
+            <Helmet>
+                <title>XYZ-Jobs | Add New Job</title>
+            </Helmet>
             <div className='new-job-page'>
                 <div className="new-job-form">
                     <div className="new-job-sections">

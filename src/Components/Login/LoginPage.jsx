@@ -3,13 +3,17 @@ import { Container } from 'react-bootstrap'
 import './LoginPage.css'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 export default function LoginPage() {
   return (
     <motion.div
-      initial={{opacity:0}}
-      animate={{opacity:1}}
-      exit={{opacity:0}}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     >
+      <Helmet>
+        <title>XYZ-Jobs | Login</title>
+      </Helmet>
       <div className='login-page'>
         <Container className='login-page-container'>
           <div className="login-box">
@@ -35,7 +39,7 @@ export default function LoginPage() {
                 <button type="submit" className="login-form-btn">Login</button>
               </div>
             </form>
-            <p style={{textAlign:"center"}}>
+            <p style={{ textAlign: "center" }}>
               Alredy have Account!&nbsp;
               <Link to={'/register'}>Sign Up</Link>
             </p>
