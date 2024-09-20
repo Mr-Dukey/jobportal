@@ -12,13 +12,13 @@ import { isAuthenticated } from './Components/Authentication/Auth';
 export default function Routing() {
   const navigate = useNavigate();
 
-    useEffect(() => {
-        // Check if the user is already logged in
-        if (isAuthenticated()) {
-            // Redirect to dashboard if logged in
-            navigate('/dashboard');
-        }
-    }, [navigate]);
+  useEffect(() => {
+    // Check if the user is already logged in
+    if (isAuthenticated()) {
+      // Redirect to dashboard if logged in
+      navigate('/dashboard');
+    }
+  }, [navigate]);
   return (
     <div>
       <Routes>
@@ -29,10 +29,10 @@ export default function Routing() {
         <Route path='/home' Component={ViewOpenings} />
 
         {/* Protected */}
-        <Route path='/dashboard' element={<ProtectedRoute element={<CompanyDashboard />} />}>
-          <Route path='new-job' element={<ProtectedRoute element={<NewJob />} />} />
-          <Route path='posted-jobs' element={<ProtectedRoute element={<ViewPostedJobs />} />} />
-          <Route path='edit-job/:id' element={<ProtectedRoute element={<EditJobDetails />} />} />
+        <Route path="/dashboard" element={<ProtectedRoute><CompanyDashboard /></ProtectedRoute>}>
+          <Route path="new-job" element={<NewJob />} />
+          <Route path="posted-jobs" element={<ViewPostedJobs />} />
+          <Route path="edit-job/:id" element={<EditJobDetails />} />
         </Route>
 
       </Routes>
