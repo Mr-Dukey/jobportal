@@ -67,7 +67,12 @@ function SideBarComponent() {
                 <span class="material-symbols-outlined" id='sidebar-icon'>
                     logout
                 </span>
-                <span className="acc-logout-btn-content">
+                <span className="acc-logout-btn-content"
+                    onClick={()=>{
+                        Cookies.remove('token');
+                        logout();
+                    }}
+                >
                     Logout
                 </span>
             </button>
