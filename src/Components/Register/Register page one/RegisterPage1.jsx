@@ -47,7 +47,72 @@ export default function RegisterPage1() {
 
 
 function CompanyRegister() {
-    
+    const navi = useNavigate();
+
+    const initCompanyData = {
+        actData: {
+            CompanyName: "",
+            OwnerName: "",
+            CompanyEmail: "",
+            CompanyPhone: "",
+            CompanyPassword: "",
+            CompanyAddress: "",
+            CompanyCity: "",
+            CompanyState: "",
+            CompanyPincode: ""
+        },
+        passData: {
+            conPass: ""
+        }
+    }
+
+    function companyReducer(state, action) {
+        if (action.type === 'cg_text') {
+            return {
+                ...state,
+                actData: {
+                    ...state.actData,
+                    [action.field]: action.payload
+                }
+            }
+        }
+        else if (action.type === 'con_pass') {
+            return{
+                ...state,
+                passData:{
+                    ...state.passData,
+                    conPass: action.cpass
+                }
+            }
+        }
+        else{
+            return state;
+        }
+    }
+
+    const [state, dispatch] = useReducer(companyReducer, initCompanyData);
+
+
+    function handleChangeData(e) {
+        const { name, value } = e.target;
+        dispatch({
+            type: 'cg_text',
+            field: name,
+            payload: value
+        })
+    }
+
+    function handleRegisterCompany(e){
+        e.preventDefault()
+
+        if(state.actData.CompanyPassword === state.passData.conPass){
+            axios.post('http://localhost:2400/company/create-company',state.actData)
+            .then(() => {
+                navi('/login')
+            })
+            .catch(err => console.log(err));
+        }
+    }
     return (
         <div className="register-form">
             <motion.div
@@ -58,12 +123,12 @@ function CompanyRegister() {
                 <div className="form-header">
                     <span>Company</span>
                 </div>
-                <Form>
+                <Form onSubmit={handleRegisterCompany}>
                     <Row className='g-4'>
                         <Col xs={12} md={6}>
                             <label htmlFor="cfname">Company&nbsp;name</label>
                             <div className="register-form-input">
-                                <input type="text" name="" id="cfname" />
+                                <input type="text" name="CompanyName" onChange={handleChangeData} value={state.actData.CompanyName} id="cfname" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     apartment
                                 </span>
@@ -72,7 +137,7 @@ function CompanyRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="clname">Owner</label>
                             <div className="register-form-input">
-                                <input type="text" name="" id="clname" />
+                                <input type="text" name="OwnerName" value={state.actData.OwnerName} onChange={handleChangeData} id="clname" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     id_card
                                 </span>
@@ -81,7 +146,7 @@ function CompanyRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="cemail">Email</label>
                             <div className="register-form-input">
-                                <input type="email" name="" id="cemail" />
+                                <input type="email" name="CompanyEmail" value={state.actData.CompanyEmail} onChange={handleChangeData} id="cemail" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     mail
                                 </span>
@@ -90,7 +155,7 @@ function CompanyRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="cphone">Phone</label>
                             <div className="register-form-input">
-                                <input type="number" name="" id="cphone" />
+                                <input type="number" name="CompanyPhone" value={state.actData.CompanyPhone} onChange={handleChangeData} id="cphone" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     call
                                 </span>
@@ -99,7 +164,7 @@ function CompanyRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="caddr">Address</label>
                             <div className="register-form-input">
-                                <input type="text" name="" id="caddr" />
+                                <input type="text" name="CompanyAddress" value={state.actData.CompanyAddress} onChange={handleChangeData} id="caddr" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     pin_drop
                                 </span>
@@ -108,7 +173,7 @@ function CompanyRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="ccity">City</label>
                             <div className="register-form-input">
-                                <input type="text" name="" id="ccity" />
+                                <input type="text"name="CompanyCity" value={state.actData.CompanyCity} onChange={handleChangeData} id="ccity" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     pin_drop
                                 </span>
@@ -117,7 +182,7 @@ function CompanyRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="cstate">State</label>
                             <div className="register-form-input">
-                                <input type="text" name="" id="cstate" />
+                                <input type="text" name="CompanyState" value={state.actData.CompanyState} onChange={handleChangeData} id="cstate" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     pin_drop
                                 </span>
@@ -126,7 +191,7 @@ function CompanyRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="cpincode">Pincode</label>
                             <div className="register-form-input">
-                                <input type="number" name="" id="cpincode" />
+                                <input type="number" name="CompanyPincode" value={state.actData.CompanyPincode} onChange={handleChangeData} id="cpincode" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     pin_drop
                                 </span>
@@ -135,7 +200,7 @@ function CompanyRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="cpass">Pasword</label>
                             <div className="register-form-input">
-                                <input type="password" name="" id="cpass" />
+                                <input type="password" name="CompanyPassword" value={state.actData.CompanyPassword} onChange={handleChangeData} id="cpass" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     password_2
                                 </span>
@@ -144,7 +209,14 @@ function CompanyRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="ccpass">Confirm&nbsp;Pasword</label>
                             <div className="register-form-input">
-                                <input type="password" name="" id="ccpass" />
+                                <input type="password" name=""
+                                    onChange={(e) => {
+                                        dispatch({
+                                            type: "con_pass",
+                                            cpass: e.target.value
+                                        })
+                                    }}
+                                id="ccpass" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     password_2
                                 </span>
@@ -177,25 +249,25 @@ function CandidateRegister() {
 
     function candidateReducer(state, action) {
         if (action.type === "cg_text") {
-            return{
+            return {
                 ...state,
-                actData:{
+                actData: {
                     ...state.actData,
-                    [action.field]:action.payload
+                    [action.field]: action.payload
                 }
             }
         }
-        else if(action.type === 'con_pass'){
-            return{
+        else if (action.type === 'con_pass') {
+            return {
                 ...state,
-                passData:{
+                passData: {
                     ...state.passData,
-                    conPass : action.cpass
+                    conPass: action.cpass
                 }
             }
         }
-        else{
-            return  state;
+        else {
+            return state;
         }
     }
 
@@ -210,16 +282,16 @@ function CandidateRegister() {
         })
     }
 
-    function handleRegisterCandidate(e){
+    function handleRegisterCandidate(e) {
         e.preventDefault();
-        if(state.actData.Password === state.passData.conPass){
-            axios.post('https://jobportal-backend-0qiv.onrender.com/user/create-user',state.actData)
-            .then(()=>{
-                navi('/login')
-            })
-            .catch(err=>console.log(err));
+        if (state.actData.Password === state.passData.conPass) {
+            axios.post('https://jobportal-backend-0qiv.onrender.com/user/create-user', state.actData)
+                .then(() => {
+                    navi('/login')
+                })
+                .catch(err => console.log(err));
         }
-        else{
+        else {
             return false;
         }
     }
@@ -288,13 +360,13 @@ function CandidateRegister() {
                         <Col xs={12} md={6}>
                             <label htmlFor="ccpass">Confirm&nbsp;Pasword</label>
                             <div className="register-form-input">
-                                <input type="password" name="conPass" value={state.passData.conPass} 
-                                onChange={(e) => {
-                                    dispatch({
-                                        type:"con_pass",
-                                        cpass:e.target.value
-                                    })
-                                }} id="ccpass" />
+                                <input type="password" name="conPass" value={state.passData.conPass}
+                                    onChange={(e) => {
+                                        dispatch({
+                                            type: "con_pass",
+                                            cpass: e.target.value
+                                        })
+                                    }} id="ccpass" />
                                 <span className="material-symbols-outlined" id='reg-icon'>
                                     password_2
                                 </span>

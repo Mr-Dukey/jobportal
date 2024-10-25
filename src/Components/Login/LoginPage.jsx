@@ -28,6 +28,25 @@ export default function LoginPage() {
       .catch(err => console.log(err))
   }
 
+  function handleCompanyLogin(e) {
+    e.preventDefault();
+    axios.post('https://jobportal-backend-0qiv.onrender.com/company/company-login',
+    // axios.post('http://localhost:2400/company/company-login',
+      loginDatas,
+      {
+        withCredentials: true
+      })
+      .then(() => {
+        login();
+        navi('/dashboard');
+      })
+      .catch(err => { console.log(err); })
+
+  }
+
+  const [companyLogin, setCompanyLogin] = useState(false);
+  console.log(companyLogin);
+
   const handleLoginDetails = (e) => {
     const { name, value } = e.target;
 
@@ -38,6 +57,8 @@ export default function LoginPage() {
       }
     ))
   }
+
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -53,7 +74,11 @@ export default function LoginPage() {
             <div className="login-header">
               <h2>Login</h2>
             </div>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={
+              companyLogin ?
+                handleCompanyLogin :
+                handleLogin
+            }>
               <div className="login-form">
                 <label htmlFor="">Email</label>
                 <div className="login-form-inp">
@@ -68,6 +93,16 @@ export default function LoginPage() {
                   <span class="material-symbols-outlined" id='log-icon'>
                     key
                   </span>
+                </div>
+                <div className="companycheck">
+                  <input type="checkbox" name="" id="companylogin" onChange={
+                    () => {
+                      if (document.querySelector('#companylogin').checked) {
+                        setCompanyLogin(true);
+                      }
+                    }
+                  } />
+                  <label htmlFor="companylogin">Company Login</label>
                 </div>
                 <button type="submit" className="login-form-btn">Login</button>
               </div>
