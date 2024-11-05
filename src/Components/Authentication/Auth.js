@@ -8,5 +8,4 @@ export const login = () => {
 
 export const logout = () => {
     localStorage.removeItem("isLoggedIn");
-    
 };

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import { login } from '../Authentication/Auth';
+import { CompanyCustomizationAPI, UserCustomizationAPI } from '../APIContext/APIContext';
 
 export default function LoginPage() {
   const navi = useNavigate()
@@ -13,9 +14,11 @@ export default function LoginPage() {
     Email: '',
     Password: ''
   })
+  const user = UserCustomizationAPI();
   function handleLogin(e) {
     e.preventDefault();
-    axios.post('https://jobportal-backend-0qiv.onrender.com/user/user-login',
+    
+    axios.post(`${user}/user-login`,
       loginDatas,
       {
         withCredentials: true
@@ -28,9 +31,10 @@ export default function LoginPage() {
       .catch(err => console.log(err))
   }
 
+  const company = CompanyCustomizationAPI();
   function handleCompanyLogin(e) {
     e.preventDefault();
-    axios.post('https://jobportal-backend-0qiv.onrender.com/company/company-login',
+    axios.post(`${company}/company-login`,
     // axios.post('http://localhost:2400/company/company-login',
       loginDatas,
       {

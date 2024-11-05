@@ -58,6 +58,7 @@
     background-color: #305af3;
     color: #ffffff;
     box-shadow: 0px 0px 3px #000;
+    cursor: pointer;
 }
 
 .register-form{

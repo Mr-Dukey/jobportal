@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
+import { CompanyCustomizationAPI,UserCustomizationAPI } from '../../APIContext/APIContext';
 
 export default function RegisterPage1() {
     const [regOption, setRegOption] = useState(false);
@@ -102,11 +103,12 @@ function CompanyRegister() {
         })
     }
 
+    const company = CompanyCustomizationAPI();
     function handleRegisterCompany(e){
         e.preventDefault()
 
         if(state.actData.CompanyPassword === state.passData.conPass){
-            axios.post('http://localhost:2400/company/create-company',state.actData)
+            axios.post(`${company}/create-company`,state.actData)
             .then(() => {
                 navi('/login')
             })
@@ -282,10 +284,11 @@ function CandidateRegister() {
         })
     }
 
+    const candidate = UserCustomizationAPI();
     function handleRegisterCandidate(e) {
         e.preventDefault();
         if (state.actData.Password === state.passData.conPass) {
-            axios.post('https://jobportal-backend-0qiv.onrender.com/user/create-user', state.actData)
+            axios.post(`${candidate}/create-user`, state.actData)
                 .then(() => {
                     navi('/login')
                 })

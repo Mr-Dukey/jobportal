@@ -4,8 +4,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
+import { JobCustomizationAPI } from '../APIContext/APIContext';
 
 export default function ViewPostedJobs() {
+    const jobAPI = JobCustomizationAPI();
+
     const [jobViews, setJobviews] = useState([]);
     const navi = useNavigate();
 
@@ -17,7 +20,7 @@ export default function ViewPostedJobs() {
     function handleShowModal(id) {
         setShowModal(true);
 
-        axios.get('https://jobportal-backend-0qiv.onrender.com/job/get-job/'+id)
+        axios.get(`${jobAPI}/get-job/${id}`)
             .then((res) => {
                 console.log(res);
                 
@@ -39,7 +42,7 @@ export default function ViewPostedJobs() {
 
     /* ======================== APIs =================================== */
     useEffect(() => {
-        axios.get('https://jobportal-backend-0qiv.onrender.com/job/get-all-jobs')
+        axios.get(`${jobAPI}/get-all-jobs`)
             .then((res) => {
                 setJobviews(res.data)
             })
@@ -48,7 +51,7 @@ export default function ViewPostedJobs() {
 
 
     function handleDelete(id) {
-        axios.delete('https://jobportal-backend-0qiv.onrender.com/job/delete-job/' + id)
+        axios.delete(`${jobAPI}/delete-job/${id}`)
             .then(() => {
                 navi('/dashboard/posted-jobs')
             })

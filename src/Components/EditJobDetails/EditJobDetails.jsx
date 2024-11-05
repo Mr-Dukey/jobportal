@@ -4,8 +4,12 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { JobCustomizationAPI } from '../APIContext/APIContext';
 
 export default function EditJobDetails() {
+
+    const jobAPI = JobCustomizationAPI();
+
     const navi = useNavigate();
     const {id} = useParams();
 
@@ -73,8 +77,7 @@ export default function EditJobDetails() {
     }
 
     useEffect(()=>{
-        axios.get(`https://jobportal-backend-0qiv.onrender.com/job/get-job/${id}`)
-        // axios.get(`http://localhost:2400/job/get-job/${id}`)
+        axios.get(`${jobAPI}/get-job/${id}`)
         .then((res)=>{
             dispatch({
                 type:'set_edit_data',
@@ -87,7 +90,7 @@ export default function EditJobDetails() {
         e.preventDefault();
         console.log(state);
 
-        axios.put(`https://jobportal-backend-0qiv.onrender.com/job/update-job/${id}`, state)
+        axios.put(`${jobAPI}/update-job/${id}`, state)
             .then(() => {
                 navi('/dashboard/posted-jobs');
             })

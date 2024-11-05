@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { JobCustomizationAPI } from '../APIContext/APIContext';
 
 export default function NewJob() {
     const navi = useNavigate();
@@ -69,7 +70,7 @@ export default function NewJob() {
         e.preventDefault();
         console.log(state);
         
-        axios.post('https://jobportal-backend-0qiv.onrender.com/job/post-a-job',state)
+        axios.post(`${JobCustomizationAPI}/post-a-job`,state)
         .then(()=>{
             navi('/dashboard/posted-jobs');
         })

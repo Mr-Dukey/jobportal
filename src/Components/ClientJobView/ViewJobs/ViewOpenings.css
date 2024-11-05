@@ -2,7 +2,7 @@
     position: absolute;
     width: 100%;
     min-height: 100%;
-    background: #eeeeed;
+    background: #fffffe;
 }
 
 .view-opening-header {
@@ -21,10 +21,7 @@
     width: 80%;
     height: 100%;
     margin: 0px 10%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(500px, 600px));
     gap: 30px;
-    justify-content: center;
 }
 
 .view-opening-area .job-card {
@@ -32,7 +29,8 @@
     background: #ffffff;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0px 0px 10px;
+    box-shadow: 0px 0px 5px;
+    margin-block: 5%;
 }
 
 .job-card .job-card-subhead {

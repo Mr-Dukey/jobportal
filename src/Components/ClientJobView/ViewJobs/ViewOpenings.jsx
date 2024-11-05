@@ -3,18 +3,19 @@ import './ViewOpenings.css';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
+import { JobCustomizationAPI } from '../../APIContext/APIContext';
 
 
 export default function ViewOpenings() {
     const [jobViews, setJobViews] = useState([]);
+    const jobAPI = JobCustomizationAPI();
 
     useEffect(() => {
-        axios.get(`https://jobportal-backend-0qiv.onrender.com/job/get-all-jobs`)
+        axios.get(`${jobAPI}/get-all-jobs`)
             .then((res) => {
                 setJobViews(res.data)
             })
             .catch(error => console.log(error))
-
     })
     return (
         <motion.div
@@ -38,52 +39,10 @@ export default function ViewOpenings() {
                     </div>
                 </div>
                 <div className="view-opening-area">
-                    {   jobViews.length!==0?
+                    {jobViews.length !== 0 ?
                         jobViews.map((items, index) => {
                             return (
-                                <div className="job-card" key={index}>
-                                    <div className="job-card-header">
-                                        <h5>{items.JobTitle}</h5>
-                                        <h6>Company : {items.JobCompany} </h6>
-                                    </div>
-
-                                    <div className="job-card-body">
-                                        <p className='job-card-subhead'>
-                                            <div>
-                                                <span className="material-symbols-outlined">
-                                                    location_on
-                                                </span> {items.JobLocation}
-                                            </div>
-                                            <div>
-                                                <span className="material-symbols-outlined">
-                                                    currency_rupee
-                                                </span> {items.JobSalary.min_salary} - {items.JobSalary.max_salary}
-                                            </div>
-                                            <div>
-                                                <span className="material-symbols-outlined">
-                                                    work
-                                                </span> {items.JobExperience} years
-                                            </div>
-                                        </p>
-                                        <p className='job-card-description'>
-                                            Description : {items.JobDescription}
-                                        </p>
-                                    </div>
-                                    <div className="job-card-footer">
-                                        <button>
-                                            <span>
-                                                Apply Now
-                                            </span>&nbsp;
-                                            <span class="material-symbols-outlined">
-                                                <span class="material-symbols-outlined">
-                                                    <span class="material-symbols-outlined">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
+                                <JobCard items={items} index={index} />
                             )
                         })
                         :
@@ -93,4 +52,53 @@ export default function ViewOpenings() {
             </div>
         </motion.div>
     )
+}
+
+
+function JobCard({ items,index }) {
+        return (
+            <div className="job-card" key={index}>
+                <div className="job-card-header">
+                    <h5>{items.JobTitle}</h5>
+                    <h6>Company : {items.JobCompany} </h6>
+                </div>
+
+                <div className="job-card-body">
+                    <p className='job-card-subhead'>
+                        <div>
+                            <span className="material-symbols-outlined">
+                                location_on
+                            </span> {items.JobLocation}
+                        </div>
+                        <div>
+                            <span className="material-symbols-outlined">
+                                currency_rupee
+                            </span> {items.JobSalary.min_salary} - {items.JobSalary.max_salary}
+                        </div>
+                        <div>
+                            <span className="material-symbols-outlined">
+                                work
+                            </span> {items.JobExperience} years
+                        </div>
+                    </p>
+                    <p className='job-card-description'>
+                        Description : {items.JobDescription}
+                    </p>
+                </div>
+                <div className="job-card-footer">
+                    <button>
+                        <span>
+                            Apply Now
+                        </span>&nbsp;
+                        <span class="material-symbols-outlined">
+                            <span class="material-symbols-outlined">
+                                <span class="material-symbols-outlined">
+                                    chevron_right
+                                </span>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        )
 }
