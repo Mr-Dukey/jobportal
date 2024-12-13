@@ -41,8 +41,7 @@ export default function LoginPage() {
       })
       .then((res) => {
         login();
-        navi('/dashboard/'+res.data.Cid);
-        // console.log(res.data.Cid);
+        navi(`/dashboard`);
         
       })
       .catch(err => { console.log(err); })
