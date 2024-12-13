@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
-import { login } from '../Authentication/Auth';
+import { companylogin,login } from '../Authentication/Auth';
 import { CompanyCustomizationAPI, UserCustomizationAPI } from '../APIContext/APIContext';
 
 export default function LoginPage() {
@@ -39,8 +39,8 @@ export default function LoginPage() {
       {
         withCredentials: true
       })
-      .then((res) => {
-        login();
+      .then(() => {
+        companylogin();
         navi(`/dashboard`);
         
       })
@@ -101,11 +101,16 @@ export default function LoginPage() {
                 <div className="companycheck">
                   <input type="checkbox" name="" id="companylogin" onChange={
                     () => {
-                      if (document.querySelector('#companylogin').checked) {
+                      if (companyLogin) {
+                        setCompanyLogin(false);
+                      }
+                      else {
                         setCompanyLogin(true);
                       }
                     }
-                  } />
+                  } 
+                  checked={companyLogin} 
+                  />
                   <label htmlFor="companylogin">Company Login</label>
                 </div>
                 <button type="submit" className="login-form-btn">Login</button>

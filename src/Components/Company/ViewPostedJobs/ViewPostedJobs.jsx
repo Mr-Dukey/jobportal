@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import { JobCustomizationAPI } from '../APIContext/APIContext';
+import { JobCustomizationAPI } from '../../APIContext/APIContext';
 
 export default function ViewPostedJobs() {
     const jobAPI = JobCustomizationAPI();
