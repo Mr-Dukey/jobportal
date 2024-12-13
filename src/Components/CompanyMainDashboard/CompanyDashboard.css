@@ -113,7 +113,7 @@
 
 @media(min-width:768px){
     .bottom-bar{
-        bottom: -100%;
+        display: none;
     }
 }
 
@@ -128,5 +128,9 @@
 
     .bottom-bar{
         bottom: 0%;
+    }
+
+    .company-main-dashboard{
+        display: none;
     }
 }

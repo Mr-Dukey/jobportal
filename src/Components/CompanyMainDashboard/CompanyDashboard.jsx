@@ -1,11 +1,14 @@
 import React from 'react';
 import './CompanyDashboard.css';
 import { motion } from 'framer-motion';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { logout } from '../Authentication/Auth';
 import Cookies from 'js-cookie';
 
 export default function CompanyDashboard() {
+    const {id}= useParams();
+    console.log();
+    
     return (
         <motion.div
             initial={{ opacity: 0 }}

@@ -26,7 +26,7 @@ export default function LoginPage() {
     )
       .then(() => {
         login();
-        navi('/dashboard')
+        navi('/')
       })
       .catch(err => console.log(err))
   }
@@ -35,14 +35,15 @@ export default function LoginPage() {
   function handleCompanyLogin(e) {
     e.preventDefault();
     axios.post(`${company}/company-login`,
-    // axios.post('http://localhost:2400/company/company-login',
       loginDatas,
       {
         withCredentials: true
       })
-      .then(() => {
+      .then((res) => {
         login();
-        navi('/dashboard');
+        navi('/dashboard/'+res.data.Cid);
+        // console.log(res.data.Cid);
+        
       })
       .catch(err => { console.log(err); })
 

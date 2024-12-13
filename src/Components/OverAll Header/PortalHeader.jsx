@@ -1,16 +1,29 @@
 import React from 'react';
 import './PortalHeader.css';
 import { useNavigate } from 'react-router-dom';
+import { Button} from 'react-bootstrap';
 
 export default function PortalHeader() {
   const navi = useNavigate();
   return (
+
     <div className='job-portal-header'>
-        <h2
-          onClick={()=>{
-            navi('/home');
+      <div>
+        <img src="logo.png"
+          onClick={() => {
+            navi('/');
           }}
-        >XYZ Jobs</h2>
-    </div>
+          alt="" />
+      </div>
+      <div>
+        <Button
+          onClick={()=>{
+            navi('/login');
+          }}
+        >
+          Login
+        </Button>
+      </div>
+    </div >
   )
 }

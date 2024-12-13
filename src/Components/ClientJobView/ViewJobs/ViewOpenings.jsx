@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import { JobCustomizationAPI } from '../../APIContext/APIContext';
+import { Col, Form, Row, Accordion } from 'react-bootstrap';
 
 
 export default function ViewOpenings() {
@@ -28,77 +29,171 @@ export default function ViewOpenings() {
             </Helmet>
             <div className='view-openings-page'>
                 <div className="view-opening-header">
-                    <h3>Current Openings</h3>
-                    <div className="view-opening-type">
-                        <span class="material-symbols-outlined">
-                            grid_view
-                        </span>
-                        <span class="material-symbols-outlined">
-                            lists
-                        </span>
+                    <SearchJobCard />
+                </div>
+                <div className="view-opening-sort">
+                    <div className="view-opening-filter">
+                        <SearchJobFilter />
+                    </div>
+                    <div className="view-opening-area">
+                        {jobViews.length !== 0 ?
+                            jobViews.map((items, index) => {
+                                return (
+                                    <JobCard items={items} index={index} />
+                                )
+                            })
+                            :
+                            <h2>No Current Openings</h2>
+                        }
                     </div>
                 </div>
-                <div className="view-opening-area">
-                    {jobViews.length !== 0 ?
-                        jobViews.map((items, index) => {
-                            return (
-                                <JobCard items={items} index={index} />
-                            )
-                        })
-                        :
-                        <h2>No Current Openings</h2>
-                    }
-                </div>
+
             </div>
         </motion.div>
     )
 }
 
-
-function JobCard({ items,index }) {
-        return (
-            <div className="job-card" key={index}>
-                <div className="job-card-header">
-                    <h5>{items.JobTitle}</h5>
-                    <h6>Company : {items.JobCompany} </h6>
+function SearchJobCard() {
+    return (
+        <Row className='search-card'>
+            <Col xs={12} xl={3}>
+                <div className="search-card-input">
+                    <input type="text" className='form-control' placeholder="Job Title,Keyword..." />
                 </div>
-
-                <div className="job-card-body">
-                    <p className='job-card-subhead'>
-                        <div>
-                            <span className="material-symbols-outlined">
-                                location_on
-                            </span> {items.JobLocation}
-                        </div>
-                        <div>
-                            <span className="material-symbols-outlined">
-                                currency_rupee
-                            </span> {items.JobSalary.min_salary} - {items.JobSalary.max_salary}
-                        </div>
-                        <div>
-                            <span className="material-symbols-outlined">
-                                work
-                            </span> {items.JobExperience} years
-                        </div>
-                    </p>
-                    <p className='job-card-description'>
-                        Description : {items.JobDescription}
-                    </p>
+            </Col>
+            <Col xs={12} xl={3}>
+                <div className="search-card-input">
+                    <input type="text" className='form-control' placeholder="Location" />
                 </div>
-                <div className="job-card-footer">
-                    <button>
-                        <span>
-                            Apply Now
-                        </span>&nbsp;
-                        <span class="material-symbols-outlined">
-                            <span class="material-symbols-outlined">
-                                <span class="material-symbols-outlined">
-                                    chevron_right
-                                </span>
-                            </span>
-                        </span>
-                    </button>
+            </Col>
+            <Col xs={12} xl={3}>
+                <div className="search-card-input">
+                    <select class="form-select">
+                        <option data-display="Category">Show All</option>
+                        <option value="1">Software Developer</option>
+                        <option value="2">Java Developer</option>
+                        <option value="3">Software Engineer</option>
+                        <option value="4">Web Developer</option>
+                        <option value="5">PHP Developer</option>
+                        <option value="6">Python Developer</option>
+                        <option value="7">Front end Developer</option>
+                        <option value="8">Associate Developer</option>
+                        <option value="9">Back end Developer</option>
+                        <option value="10">XML Developer</option>
+                        <option value="11">.NET Developer</option>
+                        <option value="12" disabled="">Marketting Developer</option>
+                    </select>
+                </div>
+            </Col>
+
+            <Col xs={12} xl={3} className='search-btn-container'>
+                <button className='serach-btn'>
+                    Search
+                </button>
+            </Col>
+            <Col xs={12} className='d-block d-lg-none search-salary'>
+                <Accordion flush>
+                    <Accordion.Header>More Filters</Accordion.Header>
+                    <Accordion.Body>
+                        <SearchJobFilter/>
+                    </Accordion.Body>
+                </Accordion>
+            </Col>
+        </Row>
+    )
+}
+
+function SearchJobFilter() {
+    return (
+        <div className="job-filter">
+            <div className="job-filter-type">
+                <h5>Job Type</h5>
+                {
+                    ['Fullttime', 'Part Time', 'Freelancing', 'Remote'].map((types) => {
+                        return (
+                            <div className="job-filter-type-inputs">
+                                <Form.Check
+                                    type='checkbox'
+                                    value={types}
+                                    label={types}
+                                />
+                            </div>
+                        )
+                    })
+                }
+            </div>
+            <div className="job-filter-salary">
+                <h5>Salary</h5>
+                <div className="salary">
+                    <Form.Label>Min Salary</Form.Label>
+                    <Form.Control type='text'/>
+                </div>
+                <div className="salary">
+                    <Form.Label>Max Salary</Form.Label>
+                    <Form.Control type='text'/>
                 </div>
             </div>
-        )
+            <button className="job-filter-btn">Clear Filter</button>
+        </div>
+    )
 }
+
+function JobCard({ items, index }) {
+    return (
+        <div className="job-card" key={index}>
+            <div className="job-card-header">
+                <h5>{items.JobTitle}</h5>
+                <h6>Company : {items.JobCompany} </h6>
+            </div>
+
+            <div className="job-card-body">
+                <p className='job-card-subhead'>
+                    <div>
+                        <span className="material-symbols-outlined">
+                            location_on
+                        </span> {items.JobLocation}
+                    </div>
+                    <div>
+                        <span className="material-symbols-outlined">
+                            currency_rupee
+                        </span> {items.JobSalary.min_salary} - {items.JobSalary.max_salary}
+                    </div>
+                    <div>
+                        <span className="material-symbols-outlined">
+                            work
+                        </span> {items.JobExperience} years
+                    </div>
+                </p>
+                <p className='job-card-description'>
+                    Description : {items.JobDescription}
+                </p>
+            </div>
+            <div className="job-card-footer">
+                <button 
+                    onClick={()=>{
+
+                    }}
+                >
+                    <span>
+                        Apply Now
+                    </span>&nbsp;
+                    <span class="material-symbols-outlined">
+                        <span class="material-symbols-outlined">
+                            <span class="material-symbols-outlined">
+                                chevron_right
+                            </span>
+                        </span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    )
+}
+
+// function ViewOpeningsDialog(){
+//     return (
+//         <div className="view-openings-dialog">
+            
+//         </div>
+//     )
+// }
