@@ -5,43 +5,64 @@
     padding: 10px 50px;
 }
 
-.view-posted-box {
+.view-posted-job-page .view-posted-box {
     position: relative;
     width: 100%;
     border: 1px solid;
     background: #fff;
 }
 
-.view-posted-box tr {
+.view-posted-job-page .view-posted-box tr {
     height: 50px;
     text-align: center;
 }
 
-.view-posted-box thead {
+.view-posted-job-page .view-posted-box thead {
     border-bottom: 1px solid #eeeddd;
     background: none;
+}
+.view-posted-job-page .view-posted-box td {
+    position: relative;
+    height: 5vh;
+}
+
+.view-posted-job-page .more-actions{
+    border: none;
+    display: flex;
+    align-items: center;
+    background: none;
+}
+
+.view-posted-job-page .more-actions:focus{
+    border: 2px solid #0068bef4;
+    border-radius: 4px;
+}
+
+.view-posted-job-page .more-action-menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    padding: 5px 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
 }
 
 .view-posted-job-page .job-action-btn{
     border: none;
     outline: none;
-    margin-inline: 10px;
+    width: 100%;
     padding: 10px 20px;
-    border-radius: 10px;
     font-weight: 500;
+    background: none;
 }
 
-.view-posted-box .job-action-btn1{
-    background-color: #008cff4f;
-    color: #0068bef4;
+.view-posted-job-page .job-action-btn:hover{
+    background: #0068bef4;
+    color: #fff;
 }
 
-.view-posted-box .job-action-btn2{
-    background-color: #00ff004f;
-    color: #057105f4;   
-}
-
-.view-posted-box .job-action-btn3{
-    background-color: #ff000058;
-    color: #be0000f4;
+.view-posted-job-page .active-action-menu{
+    display: block;
 }

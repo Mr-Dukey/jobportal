@@ -1,13 +1,11 @@
 import React from 'react';
 import './CompanyDashboard.css';
 import { motion } from 'framer-motion';
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
-import { logout } from '../../Authentication/Auth';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { companylogout } from '../../Authentication/Auth';
 import Cookies from 'js-cookie';
 
 export default function CompanyDashboard() {
-    const {id}= useParams();
-    console.log();
     
     return (
         <motion.div
@@ -35,7 +33,7 @@ function SideBarComponent() {
 
     const handleLogout = () => {
         Cookies.remove('token');
-        logout();
+        companylogout();
         navigate('/login');
     };
     return (
@@ -70,12 +68,7 @@ function SideBarComponent() {
                 <span class="material-symbols-outlined" id='sidebar-icon'>
                     logout
                 </span>
-                <span className="acc-logout-btn-content"
-                    onClick={()=>{
-                        Cookies.remove('token');
-                        logout();
-                    }}
-                >
+                <span className="acc-logout-btn-content">
                     Logout
                 </span>
             </button>

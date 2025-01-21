@@ -15,12 +15,6 @@
     height: 100%;
 }
 
-.company-main-dashboard-outlet{
-    overflow-y: scroll;
-    padding-top: 20px;
-}
-
-
 .company-main-sidebar {
     background-color: #ffffff;
     display: flex;

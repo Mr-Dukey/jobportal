@@ -9,8 +9,14 @@ function App() {
     <div className="App">
       <APIContext>
         <AnimatePresence>
-          <PortalHeader />
-          <Routing />
+          <div className='portal-container'>
+            <header className='main-header'>
+              <PortalHeader />
+            </header>
+            <div className='main-content'>
+              <Routing />
+            </div>
+          </div>
         </AnimatePresence>
       </APIContext>
     </div>

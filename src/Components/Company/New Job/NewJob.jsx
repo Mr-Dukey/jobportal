@@ -1,14 +1,16 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import './NewJob.css'
 import { Col, Row } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { JobCustomizationAPI } from '../../APIContext/APIContext';
-
+import { CompanyCustomizationAPI, JobCustomizationAPI } from '../../APIContext/APIContext';
+import Cookies from 'js-cookie';
 export default function NewJob() {
     const navi = useNavigate();
+
+    const token = Cookies.get('token');
     const intialData = {
         JobTitle: "",
         JobType: "",
@@ -50,6 +52,12 @@ export default function NewJob() {
                 }
             };
         }
+        else if(action.type === "company-details"){
+            return{
+                ...state,
+                JobCompany:action.data.CompanyName            
+            }
+        }
         else {
             return false;
         }
@@ -65,18 +73,35 @@ export default function NewJob() {
             payload: value
         })
     }
-
+    const job = JobCustomizationAPI();
     function handleSubmitJobForm(e){
         e.preventDefault();
         console.log(state);
         
-        axios.post(`${JobCustomizationAPI}/post-a-job`,state)
+        axios.post(`${job}/post-a-job`,state)
         .then(()=>{
             navi('/dashboard/posted-jobs');
         })
         .catch(error=>console.log(error))
     }
-
+      const company = CompanyCustomizationAPI();
+    
+    useEffect(()=>{
+        axios.get(`${company}/company-data`,{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then((res)=>{
+            console.log(res.data);
+            
+            dispatch({
+                type:"company-details",
+                data:res.data.company
+            })
+        })
+        .catch((error)=>{console.log(error);})
+    },[token])
 
     return (
         <motion.div

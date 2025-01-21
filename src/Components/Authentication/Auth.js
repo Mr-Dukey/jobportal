@@ -1,22 +1,34 @@
+import Cookies from "js-cookie";
+
+/* user Login */
 export const isAuthenticated = () => {
-    return localStorage.getItem("isLoggedIn") === "true";
+    return Cookies.get("isUserLoggedIn")
+    // return localStorage.getItem("isLoggedIn") === "true";
 };
 
 export const login = () => {
-    localStorage.setItem("isLoggedIn", "true");
+    Cookies.set('isUserLoggedIn',true);
+    
+    // localStorage.setItem("isLoggedIn", "true");
 };
 
 export const logout = () => {
-    localStorage.removeItem("isLoggedIn");
+    Cookies.remove('isUserLoggedIn');
+    // localStorage.removeItem("isLoggedIn");
 };
+
+/* Company Login */
 export const companyisAuthenticated = () => {
-    return localStorage.getItem("companyisLoggedIn") === "true";
+    return Cookies.get("isCompanyLoggedIn");
+    // return localStorage.getItem("companyisLoggedIn") === "true";
 };
 
 export const companylogin = () => {
-    localStorage.setItem("companyisLoggedIn", "true");
+    Cookies.set('isCompanyLoggedIn',true);
+    // localStorage.setItem("companyisLoggedIn", "true");
 };
 
 export const companylogout = () => {
-    localStorage.removeItem("companyisLoggedIn");
+    Cookies.remove('isCompanyLoggedIn');
+    // localStorage.removeItem("companyisLoggedIn");
 };

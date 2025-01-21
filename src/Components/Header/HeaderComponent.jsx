@@ -5,7 +5,9 @@ export default function HeaderComponent() {
     <div>
       <div className='row rows'>
         <div className="col-2 d-none d-lg-flex navrow">
-          <button><h1>JOBES</h1></button>
+          <button>
+            <h1>JOBES</h1>
+          </button>
         </div>
         <div className="col-12 col-lg-10">
           <div className="nav">

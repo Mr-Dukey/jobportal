@@ -8,6 +8,7 @@ import ViewPostedJobs from './Components/Company/ViewPostedJobs/ViewPostedJobs';
 import ViewOpenings from './Components/ClientJobView/ViewJobs/ViewOpenings';
 import EditJobDetails from './Components/Company/EditJobDetails/EditJobDetails';
 import { companyisAuthenticated, isAuthenticated } from './Components/Authentication/Auth';
+import ProfilePage from './Components/ClientJobView/ProfilePage/ProfilePage';
 
 export default function Routing() {
   return (
@@ -30,6 +31,7 @@ export default function Routing() {
         {/* End Protected Routes for company */}
         
         {/* Protected Routes for user */}
+          <Route path='/profile' element={<ProfilePage />}/>
         {/* End Protected Routes for user */}
 
         
