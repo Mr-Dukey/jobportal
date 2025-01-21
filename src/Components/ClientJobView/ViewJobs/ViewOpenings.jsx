@@ -3,9 +3,12 @@ import "./ViewOpenings.css";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import { JobCustomizationAPI } from "../../APIContext/APIContext";
+import {
+  JobCustomizationAPI,
+  UserCustomizationAPI,
+} from "../../APIContext/APIContext";
 import { Col, Form, Row, Accordion, Modal, Button } from "react-bootstrap";
-
+import Cookies from "js-cookie";
 export default function ViewOpenings() {
   const [jobViews, setJobViews] = useState([]);
   const jobAPI = JobCustomizationAPI();
@@ -208,6 +211,35 @@ function JobCard({ items, index }) {
 }
 
 function ViewOpeningsDialog({ showJob, closeFunction, showJobDetails }) {
+  const token = Cookies.get("token");
+
+  const [id, setId] = useState("");
+  const user_api = UserCustomizationAPI();
+  const job_api = JobCustomizationAPI();
+  useEffect(() => {
+    axios
+      .get(`${user_api}/data`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setId(response.data.user._id);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    },[id,token,user_api]);
+
+  
+    function applyJob(){
+      axios.put(`${job_api}/apply-job/user=${id}&job=${showJobDetails._id}`)
+      .then(()=>{
+        console.log('Job applied successfully');
+        closeFunction();
+      })
+      .catch((error) => console.log(error));
+    }
   return (
     <>
       <Modal show={showJob} onHide={closeFunction}>
@@ -241,6 +273,9 @@ function ViewOpeningsDialog({ showJob, closeFunction, showJobDetails }) {
         <Modal.Footer>
           <Button variant="secondary" onClick={closeFunction}>
             Close
+          </Button>
+          <Button variant="primary" onClick={applyJob}>
+            Apply
           </Button>
         </Modal.Footer>
       </Modal>
