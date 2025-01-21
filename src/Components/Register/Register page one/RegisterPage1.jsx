@@ -301,7 +301,7 @@ function CandidateRegister() {
     return (
         <div className="register-form">
             <Helmet>
-                <title>XYZ-Jobs | Register </title>
+                <title>Segolsys-Jobs | Register </title>
             </Helmet>
             <motion.div
                 initial={{ opacity: 0 }}

@@ -28,7 +28,7 @@ export default function ViewOpenings() {
       exit={{ opacity: 0 }}
     >
       <Helmet>
-        <title>XYZ-Jobs | Home </title>
+        <title>Segolsys-Jobs | Home </title>
       </Helmet>
       <div className="view-openings-page">
         <div className="view-opening-header">

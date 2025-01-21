@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { companylogout } from '../../Authentication/Auth';
 import Cookies from 'js-cookie';
+import { Helmet } from 'react-helmet';
 
 export default function CompanyDashboard() {
     
@@ -13,6 +14,9 @@ export default function CompanyDashboard() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
+            <Helmet>
+                <title>Dashboard</title>
+            </Helmet>
             <div className='company-main-dashboard'>
                 <div className="company-main-dashboard-sidebar">
                     <SideBarComponent />

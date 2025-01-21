@@ -96,7 +96,7 @@ export default function ViewPostedJobs() {
       </ToastContainer>
 
       <Helmet>
-        <title>XYZ-Jobs | View Jobs</title>
+        <title>View Jobs</title>
       </Helmet>
       <table className="view-posted-box">
         <thead>

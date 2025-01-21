@@ -110,7 +110,7 @@ export default function NewJob() {
             exit={{ opacity: 0 }}
         >
             <Helmet>
-                <title>XYZ-Jobs | Add New Job</title>
+                <title>Add New Job</title>
             </Helmet>
             <div className='new-job-page'>
                 <div className="new-job-form">

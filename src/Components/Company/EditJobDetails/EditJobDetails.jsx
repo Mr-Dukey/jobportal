@@ -100,7 +100,7 @@ export default function EditJobDetails() {
     return (
         <div>
             <Helmet>
-                <title>XYZ-Jobs | Edit Job Details</title>
+                <title>Edit Job Details</title>
             </Helmet>
             <motion.div
                 initial={{ opacity: 0 }}

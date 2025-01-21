@@ -70,7 +70,7 @@ export default function LoginPage() {
       exit={{ opacity: 0 }}
     >
       <Helmet>
-        <title>XYZ-Jobs | Login</title>
+        <title>Segolsys-Jobs | Login</title>
       </Helmet>
       <div className='login-page'>
         <Container className='login-page-container'>
